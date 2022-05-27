@@ -1,0 +1,41 @@
+.book-card-conteiner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  border: 1px solid #757575;
+  margin: 30px;
+  padding: 24px;
+  background-color: #cfcaca;
+  border-radius: 10px;
+  max-width: 200px;
+  max-height: 400px;
+
+  .image {
+    width: 200px;
+    height: 200px;
+    //margin-bottom: 14px;
+    //border-radius: 10px;
+    //border: 2px solid #757575;
+  }
+
+
+  .title {
+    font-size: 26px;
+    margin-bottom: 14px;
+    overflow: hidden;
+
+  }
+
+  .subtitle {
+    font-size: 16px;
+    margin-bottom: 10px;
+    //overflow: hidden;
+  }
+
+  .price {
+    font-size: 26px;
+    margin-bottom: 14px;
+
+  }
+}
