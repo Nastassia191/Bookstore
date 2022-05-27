@@ -1,48 +1,33 @@
-import React from 'react';
-import BookType from '../../types/bookType';
+import React, { useEffect } from 'react';
 import BooksCard from './book/card/BooksCard';
+import data from './data';
+import BookType from '../../types/bookType';
 
 import './Books.scss';
 
 
-const data: BookType[] = [
-  {
-    "title": "Practical MongoDB",
-    "subtitle": "Architecting, Developing, and Administering MongoDB",
-    "isbn13": "9781484206485",
-    "price": "$32.04",
-    "image": "https://itbook.store/img/books/9781484206485.png",
-    "url": "https://itbook.store/books/9781484206485"
-  },
-  {
-    "title": "The Definitive Guide to MongoDB, 3rd Edition",
-    "subtitle": "A complete guide to dealing with Big Data using MongoDB",
-    "isbn13": "9781484211830",
-    "price": "$47.11",
-    "image": "https://itbook.store/img/books/9781484211830.png",
-    "url": "https://itbook.store/books/9781484211830"
-  },
-  {
-    "title": "MongoDB in Action, 2nd Edition",
-    "subtitle": "Covers MongoDB version 3.0",
-    "isbn13": "9781617291609",
-    "price": "$32.10",
-    "image": "https://itbook.store/img/books/9781617291609.png",
-    "url": "https://itbook.store/books/9781617291609"
-  },
-];
 
 
-type PropsType = {
 
-}
+
+
+type PropsType = {}
+
+const URL = "https://api.itbook.store/1.0/";
 
 const Books: React.FC<PropsType> = () => {
+  // useEffect(() => {
+  //   fetch(URL)
+  //     .then((response) => (response.json))
+  //     .then((data) => {
+  //       const books = data.results as BookType[];
+  //       console.log(books);
+  //     })
+  // })
+
   return (
     <div className="books-container">
-      <BooksCard data={data[0]} />
-      <BooksCard data={data[1]} />
-      <BooksCard data={data[2]} />
+      {data.map((item) => <BooksCard key={item.isbn13} data={item} />)}
     </div>
   )
 }
