@@ -1,0 +1,25 @@
+.App-conteiner {
+  padding: 24px;
+  min-height: 100vh;
+  background-color: #ddd8d5;
+
+  padding-top: 60px;
+
+}
+
+.icon-button {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+
+  path {
+    fill: white;
+  }
+
+  &:hover {
+    path {
+      fill: rgb(162, 145, 219);
+    }
+  }
+
+}

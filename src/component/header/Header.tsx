@@ -17,14 +17,19 @@ const Header: React.FC = () => {
 
   return (
     <nav className="header-container">
-      <div className="logo">
-        <Logo />
-        <div className="app-name">
-          Book.store
+      <div className="logo-container">
+        <div className="logo">
+          <Logo />
+          <div className="app-name">
+            Book.store
+          </div>
         </div>
+        <Timer />
       </div>
 
-      <Timer />
+
+
+
 
     </nav>
 

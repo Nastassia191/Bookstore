@@ -24,14 +24,15 @@ const Timer: React.FC = () => {
 
   return (
     <div className="timer-conteiner">
+      <TimerIcon
+        onClick={handleClick}
+        className="icon-button" />
+
       {showTime &&
         <div className="time">
           Time: {time}
         </div>
       }
-      <TimerIcon
-        onClick={handleClick}
-        className="icon-button" />
     </div>
   )
 }
