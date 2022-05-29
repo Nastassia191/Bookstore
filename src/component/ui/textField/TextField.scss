@@ -13,12 +13,12 @@
     outline: none;
 
     &:hover {
-      border: 1px var(--primary-color0);
+      border: 1px solid var(--primary-color1);
     }
 
     &:focus {
       border: 1px var(--primary-color1);
-      outline: 1px solid (--primary-color1);
+      outline: 1px solid var(--primary-color1);
       ;
     }
   }
