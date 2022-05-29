@@ -5,7 +5,7 @@
   top: 0;
   left: 0;
   right: 0;
-  background-color: #2c85f2;
+  background-color: var(--header-color);
   padding: 0 48px;
   display: flex;
   align-items: center;
@@ -27,7 +27,7 @@
       margin-right: 10px;
 
       path {
-        fill: #b5e4f2;
+        fill: var(--primary-color2);
       }
     }
 

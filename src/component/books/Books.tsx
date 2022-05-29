@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import BooksCard from './book/card/BooksCard';
-import data from './data';
+//import data from './data';
 import BookType from '../../types/bookType';
 
 import './Books.scss';
@@ -8,26 +8,46 @@ import './Books.scss';
 
 
 
+type PropsType = {};
 
-
-
-type PropsType = {}
-
-const URL = "https://api.itbook.store/1.0/";
+const URL = "https://api.itbook.store/1.0/new";
 
 const Books: React.FC<PropsType> = () => {
-  // useEffect(() => {
-  //   fetch(URL)
-  //     .then((response) => (response.json))
-  //     .then((data) => {
-  //       const books = data.results as BookType[];
-  //       console.log(books);
-  //     })
-  // })
+
+  const [books, setBooks] = useState<BookType[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(fetchData, 1000);
+  }, []);
+
+
+
+
+  const fetchData = () => {
+    fetch(URL)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.books);
+        const books = data.books;
+        console.log(books);
+        setBooks(books);
+      })
+      .catch(() => {
+        setError(true);
+      })
+      .finally(() => {
+        setLoading(false);
+      })
+  }
 
   return (
     <div className="books-container">
-      {data.map((item) => <BooksCard key={item.isbn13} data={item} />)}
+      {books.map((item) => <BooksCard key={item.isbn13} data={item} />)}
+      {loading && "Loading..."}
+      {error && "Error"}
     </div>
   )
 }
