@@ -31,7 +31,7 @@ const Books: React.FC<PropsType> = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data.books);
-        const books = data.books;
+        const books = data.books as BookType[];
         console.log(books);
         setBooks(books);
       })
