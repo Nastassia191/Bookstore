@@ -1,48 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import BooksCard from './card/BooksCard';
+import useBooks from './useBooks';
 
-
-import BookType from '../../types/bookType';
 
 import './Books.scss';
-import BooksCard from './card/BooksCard';
+
+
 
 
 
 
 type PropsType = {};
 
-const URL = "https://api.itbook.store/1.0/new";
+
 
 const Books: React.FC<PropsType> = () => {
 
-  const [books, setBooks] = useState<BookType[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const { books, loading, error } = useBooks();
 
-  useEffect(() => {
-    setLoading(true);
-    setTimeout(fetchData, 1000);
-  }, []);
-
-
-
-
-  const fetchData = () => {
-    fetch(URL)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data.books);
-        const books = data.books as BookType[];
-        console.log(books);
-        setBooks(books);
-      })
-      .catch(() => {
-        setError(true);
-      })
-      .finally(() => {
-        setLoading(false);
-      })
-  }
 
   return (
     <div className="books-container">
