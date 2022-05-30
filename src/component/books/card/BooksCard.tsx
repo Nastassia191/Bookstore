@@ -1,5 +1,6 @@
 import React from 'react';
-import BookType from '../../../../types/bookType';
+import BookType from '../../../types/bookType';
+
 
 import './BooksCard.scss';
 

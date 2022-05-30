@@ -1,6 +1,6 @@
 .button-conteiner {
   cursor: pointer;
-  background-color: rgb(55, 55, 231);
+  background-color: var(--primary-color0);
   border: none;
   outline: none;
   border-radius: 16px;
@@ -9,7 +9,7 @@
 
 
   &:hover {
-    background-color: rgb(117, 117, 216);
+    background-color: var(--primary-color1);
   }
 
   &:focus {

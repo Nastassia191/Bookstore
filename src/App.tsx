@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import './App.scss';
+import Book from './component/book/Book';
 import Books from './component/books/Books';
 import Header from './component/header/Header';
 import Registration from './component/registration/Registration';
@@ -22,6 +23,7 @@ const App: React.FC = () => {
       <Header />
       <Books />
       <Registration />
+      <Book isbn13="9781617294136" />
     </div>
 
   );

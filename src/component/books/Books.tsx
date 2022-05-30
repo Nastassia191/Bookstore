@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import BooksCard from './book/card/BooksCard';
-//import data from './data';
+
+
 import BookType from '../../types/bookType';
 
 import './Books.scss';
+import BooksCard from './card/BooksCard';
 
 
 
