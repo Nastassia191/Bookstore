@@ -6,6 +6,8 @@ import Button from '../ui/button/Button';
 import FormCard from '../ui/formCard/FormCard';
 import FormTextField from '../ui/formTextField/FormTextField';
 
+import './Registration.scss';
+
 
 
 
@@ -27,11 +29,11 @@ const Registration: React.FC = () => {
       <FormCard header="Registration">
         {lang === "en"
           ?
-          <button onClick={() => setLang("ru")}>
+          <button className='button_registration_lang' onClick={() => setLang("ru")}>
             ru
           </button>
           :
-          <button onClick={() => setLang("en")}>
+          <button className='button_registration_lang' onClick={() => setLang("en")}>
             en
           </button>
         }
