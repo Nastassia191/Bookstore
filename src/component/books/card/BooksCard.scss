@@ -40,4 +40,24 @@
     margin-bottom: 14px;
 
   }
+
+  li {
+    &:not(:last-child) {
+      margin-right: 24px;
+    }
+  }
+
+  a {
+    color: #080808;
+
+    &:hover {
+      color: #fbfcfd;
+
+    }
+
+    &._active {
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+  }
 }

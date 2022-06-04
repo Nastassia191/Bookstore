@@ -7,12 +7,12 @@ import { ReactComponent as Logo } from "../assets/logo.svg";
 
 
 import "./Header.scss";
+import { Link } from "react-router-dom";
 
 
 
 
 const Header: React.FC = () => {
-
 
 
 
@@ -30,13 +30,20 @@ const Header: React.FC = () => {
         <Timer />
       </div>
 
-      <div className="controls">
-      </div>
+      < ul className="links">
+        <li>
+          <Link to="/books">
+            New books
+          </Link>
 
+        </li>
+        <li>
+          <Link to="/registration">
+            Registration
+          </Link>
+        </li>
 
-
-
-
+      </ul>
 
     </nav>
 

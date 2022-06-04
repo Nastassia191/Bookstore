@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import BookType from '../../../types/bookType';
 
 
@@ -18,9 +19,12 @@ const BooksCard: React.FC<PropsType> = ({ data }) => {
   return (
 
     <div className="book-card-conteiner">
-      <div className='title'>
-        {data.title}
-      </div>
+      <Link to={`/books/${data.isbn13}`} >
+        <div className='title'>
+          {data.title}
+        </div>
+      </Link>
+
       <img className="image" src={data.image} alt="#" />
       <div className='subtitle'>
         {data.subtitle}

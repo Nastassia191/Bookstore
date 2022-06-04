@@ -10,22 +10,24 @@ import Registration from './component/registration/Registration';
 
 const App: React.FC = () => {
   return (
-    // <BrowserRouter>
-    //   <div className="App-conteiner">
-    //     <Header />
-    //   </div>
-    //   <Routes>
-    //     <Route path='/' element={<Books />} />
-    //   </Routes>
+    <BrowserRouter>
+      <div className="App-conteiner">
+        <Header />
+        <div className="App-content">
 
-    // </BrowserRouter>
-    <div className="App-conteiner">
-      <Header />
-      <Books />
-      <Registration />
-      <Book isbn13="9781617294136" />
-    </div>
+          <Routes>
+            <Route path='/books'  >
+              <Route index element={<Books />} />
+              <Route path=':isbn13' element={<Book />} />
+            </Route>
+            <Route path='registration' element={<Registration />} />
 
+          </Routes>
+
+        </div>
+      </div>
+
+    </BrowserRouter>
   );
 }
 

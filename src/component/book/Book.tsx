@@ -1,73 +1,93 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import BookType from '../../types/bookType';
 
 import './Book.scss';
 
-type PropsType = {
-  isbn13: string,
-}
 
-const data: BookType = {
-  "error": "0",
-  "title": "Securing DevOps",
-  "subtitle": "Security in the Cloud",
-  "authors": "Julien Vehent",
-  "publisher": "Manning",
-  "isbn10": "1617294136",
-  "isbn13": "9781617294136",
-  "pages": "384",
-  "year": "2018",
-  "rating": "5",
-  "desc": "An application running in the cloud can benefit from incredible efficiencies, but they come with unique security threats too. A DevOps team's highest priority is understanding those risks and hardening the system against them.Securing DevOps teaches you the essential techniques to secure your cloud ...",
-  "price": "$26.98",
-  "image": "https://itbook.store/img/books/9781617294136.png",
-  "url": "https://itbook.store/books/9781617294136",
-  "pdf": {
-    "Chapter 2": "https://itbook.store/files/9781617294136/chapter2.pdf",
-    "Chapter 5": "https://itbook.store/files/9781617294136/chapter5.pdf"
-  }
-}
+
 
 const URL = "https://api.itbook.store/1.0/books/"
 
 
-const Book: React.FC<PropsType> = ({ isbn13 }) => {
+const Book: React.FC = () => {
+  const [book, setBook] = useState<BookType>();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const { isbn13 } = useParams();
 
+  useEffect(() => {
+    fetchData();
+  }, []);
 
+  const fetchData = () => {
+    setLoading(true);
+    setTimeout(() => {
+      fetch(`${URL}${isbn13}`)
+        .then((response) => response.json())
+        .then((data) => {
+          const book = data as BookType;
+          setBook(book);
+        })
+        .catch(() => {
+          setError(true);
+        })
+        .finally(() => {
+          setLoading(false);
+        })
+    }, 0);
+  }
 
-  return (
-    <div className="book-for-card-conteiner">
-      <div className="book-card-image">
-        <img className="image" src={data.image} alt="#" />
+  if (loading) {
+    return (
+      <div>
+        Loading...
       </div>
-      <div className='book-card-about'>
-        <div className='title'>
-          {data.title}
+    )
+  } else if (error) {
+    return (
+      <div>
+        Error...
+      </div>
+    )
+  } else if (book) {
+    return (
+      <div className="book-for-card-conteiner">
+        <div className="book-card-image">
+          <img className="image" src={book.image} alt="" />
         </div>
-        <div className='authors'>
-          Author: {data.authors}
-        </div>
-        <div className='price'>
-          {data.price}
-        </div>
-        <div className='subtitle'>
-          {data.subtitle}
-        </div>
-        <div className='desc'>
-          {data.desc}
-        </div>
-        <div className='publisher'>
-          Publisher: {data.publisher}
-        </div>
-        <div className='year'>
-          Year: {data.year}
-        </div>
-        <div className='rating'>
-          Rating: {data.rating}
+        <div className='book-card-about'>
+          <div className='title'>
+            {book.title}
+          </div>
+
+          <div className='authors'>
+            Author: {book.authors}
+          </div>
+          <div className='price'>
+            {book.price}
+          </div>
+          <div className='subtitle'>
+            {book.subtitle}
+          </div>
+          <div className='desc'>
+            {book.desc}
+          </div>
+          <div className='publisher'>
+            Publisher: {book.publisher}
+          </div>
+          <div className='year'>
+            Year: {book.year}
+          </div>
+          <div className='rating'>
+            Rating: {book.rating}
+          </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
+  return null;
 }
+
 
 export default Book;
