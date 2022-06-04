@@ -1,6 +1,6 @@
 import React from 'react';
 import BooksCard from './card/BooksCard';
-import useBooks from './useBooks';
+import useBooks from '../../apiHooks/useBooks';
 
 
 import './Books.scss';

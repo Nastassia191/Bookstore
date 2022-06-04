@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import BookType from '../../types/bookType';
+import BookType from '../types/bookType';
+
 
 
 const URL = "https://api.itbook.store/1.0/new";

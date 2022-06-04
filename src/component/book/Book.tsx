@@ -1,42 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import BookType from '../../types/bookType';
+import useBook from '../../apiHooks/useBook';
 
 import './Book.scss';
 
 
 
 
-const URL = "https://api.itbook.store/1.0/books/"
-
-
 const Book: React.FC = () => {
-  const [book, setBook] = useState<BookType>();
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+
+
   const { isbn13 } = useParams();
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const { book, loading, error } = useBook(isbn13);
 
-  const fetchData = () => {
-    setLoading(true);
-    setTimeout(() => {
-      fetch(`${URL}${isbn13}`)
-        .then((response) => response.json())
-        .then((data) => {
-          const book = data as BookType;
-          setBook(book);
-        })
-        .catch(() => {
-          setError(true);
-        })
-        .finally(() => {
-          setLoading(false);
-        })
-    }, 0);
-  }
+
 
   if (loading) {
     return (
