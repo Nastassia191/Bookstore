@@ -1,39 +1,25 @@
-import { useEffect, useState } from 'react';
-import BookType from '../types/bookType';
 
+import BookType from '../types/bookType';
+import useRequest from './useRequest';
 
 
 const URL = "https://api.itbook.store/1.0/new";
 
-const useBooks = () => {
-
-    const [books, setBooks] = useState<BookType[]>([]);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(false);
-
-    useEffect(() => {
-        fetchData();
-    }, []);
-
-    const fetchData = () => {
-        setLoading(true);
-        setTimeout(() => {
-            fetch(URL)
-                .then((response) => response.json())
-                .then((data) => {
-                    const books = data.books as BookType[];
-                    setBooks(books);
-                })
-                .catch(() => {
-                    setError(true);
-                })
-                .finally(() => {
-                    setLoading(false);
-                })
-        }, 0);
-    }
-
-    return { books, loading, error };
+type ResponseType = {
+    error: string,
+    total?: string,
+    page?: string,
+    books: BookType[],
 }
+
+const defValue: ResponseType = {
+    error: "0",
+    books: [],
+}
+
+
+const useBooks = () => useRequest<ResponseType>(defValue, URL);
+
+
 
 export default useBooks;

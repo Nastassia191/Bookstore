@@ -4,16 +4,25 @@
   width: 100%;
   box-sizing: border-box;
 
+  .pagination {
+    margin: 0 auto 24px;
+  }
 
+  .cards {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
 
+  .posts-filter {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 24px;
-
+  }
 
 
 }

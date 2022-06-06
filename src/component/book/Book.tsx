@@ -12,7 +12,8 @@ const Book: React.FC = () => {
 
   const { isbn13 } = useParams();
 
-  const { book, loading, error } = useBook(isbn13);
+
+  const { data, loading, error } = useBook(isbn13);
 
 
 
@@ -28,37 +29,37 @@ const Book: React.FC = () => {
         Error...
       </div>
     )
-  } else if (book) {
+  } else if (data) {
     return (
       <div className="book-for-card-conteiner">
         <div className="book-card-image">
-          <img className="image" src={book.image} alt="" />
+          <img className="image" src={data.image} alt="" />
         </div>
         <div className='book-card-about'>
           <div className='title'>
-            {book.title}
+            {data.title}
           </div>
 
           <div className='authors'>
-            Author: {book.authors}
+            Author: {data.authors}
           </div>
           <div className='price'>
-            {book.price}
+            {data.price}
           </div>
           <div className='subtitle'>
-            {book.subtitle}
+            {data.subtitle}
           </div>
           <div className='desc'>
-            {book.desc}
+            {data.desc}
           </div>
           <div className='publisher'>
-            Publisher: {book.publisher}
+            Publisher: {data.publisher}
           </div>
           <div className='year'>
-            Year: {book.year}
+            Year: {data.year}
           </div>
           <div className='rating'>
-            Rating: {book.rating}
+            Rating: {data.rating}
           </div>
         </div>
       </div>
