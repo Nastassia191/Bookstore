@@ -1,10 +1,5 @@
 import { useEffect, useState } from 'react';
 
-
-
-
-
-
 const useRequest = <T>(defValue: T, url: string) => {
   const [data, setData] = useState<T>(defValue);
   const [loading, setLoading] = useState(false);
@@ -12,7 +7,7 @@ const useRequest = <T>(defValue: T, url: string) => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [url]);
 
   const fetchData = () => {
     setLoading(true);

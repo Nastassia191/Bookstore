@@ -32,9 +32,9 @@ const Header: React.FC = () => {
 
       < ul className="links">
         <li>
-          <Link to="/books">
+          {/* <Link to="/newbook">
             New books
-          </Link>
+          </Link> */}
 
         </li>
         <li>
