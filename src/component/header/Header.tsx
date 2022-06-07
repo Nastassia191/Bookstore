@@ -1,13 +1,11 @@
 import React from "react";
-
 import Timer from '../timer/Timer';
-import useTranslete from "../hooks/useTranslete";
 import { ReactComponent as Logo } from "../assets/logo.svg";
-
+import { Link } from "react-router-dom";
 
 
 import "./Header.scss";
-import { Link } from "react-router-dom";
+
 
 
 
@@ -23,18 +21,18 @@ const Header: React.FC = () => {
       <div className="logo-container">
         <div className="logo">
           <Logo />
-          <div className="app-name">
+          <Link className="app-name" to="/books">
             Book.store
-          </div>
+          </Link>
         </div>
         <Timer />
       </div>
 
       < ul className="links">
         <li>
-          {/* <Link to="/newbook">
+          <Link to="/newBooks">
             New books
-          </Link> */}
+          </Link>
 
         </li>
         <li>

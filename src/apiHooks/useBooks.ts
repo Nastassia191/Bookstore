@@ -3,7 +3,7 @@ import BookType from '../types/bookType';
 import useRequest from './useRequest';
 
 
-//const URL = "https://api.itbook.store/1.0/new";
+
 const URL = "https://api.itbook.store/1.0/search/js/";
 
 
@@ -23,7 +23,6 @@ const defValue: ResponseType = {
 
 const useBooks = (page: number) => {
     const url = `${URL}${page}`;
-    console.log(url);
     return useRequest<ResponseType>(defValue, url);
 
 }

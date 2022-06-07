@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import BooksCard from './card/BooksCard';
 import useBooks from '../../apiHooks/useBooks';
 import Pagination from '@mui/material/Pagination';

@@ -11,6 +11,7 @@ const useRequest = <T>(defValue: T, url: string) => {
 
   const fetchData = () => {
     setLoading(true);
+    setData(defValue);
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
