@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import useBook from '../../apiHooks/useBook';
+import { ReactComponent as Star } from "../assets/star.svg";
 
 import './Book.scss';
 
@@ -59,7 +60,7 @@ const Book: React.FC = () => {
             Year: {data.year}
           </div>
           <div className='rating'>
-            Rating: {data.rating}
+            Rating: <Star className="rating-star" />{data.rating}
           </div>
         </div>
       </div>
