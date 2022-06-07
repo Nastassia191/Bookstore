@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import BooksCard from './card/BooksCard';
 import useBooks from '../../apiHooks/useBooks';
-import Pagination from '@mui/material/Pagination';
+import BooksFilter from './BooksFilter';
+import BooksFilterType from './BooksFilterType';
+
 
 import './Books.scss';
-
-
 
 type PropsType = {};
 
@@ -14,21 +14,20 @@ type PropsType = {};
 const Books: React.FC<PropsType> = () => {
 
 
-  const [page, setPage] = useState(1);
-  const { data, loading, error } = useBooks(page);
+  const [filter, setFilter] = useState<BooksFilterType>({
+    page: 1,
+  });
+  const { data, loading, error } = useBooks(filter);
 
 
 
 
   return (
     <div className="books-container">
-      <div className="pagination">
-        <Pagination
-          page={page}
-          onChange={(event, value: number) => setPage(value)}
-          count={37}
-        />
-      </div>
+      <BooksFilter
+        filter={filter}
+        setFilter={setFilter}
+      />
 
 
       <div className="cards">

@@ -1,5 +1,5 @@
 type BooksFilterType = {
-  title: string,
+  page: number,
 }
 
 export default BooksFilterType;

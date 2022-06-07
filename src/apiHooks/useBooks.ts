@@ -1,4 +1,5 @@
 
+import BooksFilterType from '../component/books/BooksFilterType';
 import BookType from '../types/bookType';
 import useRequest from './useRequest';
 
@@ -21,7 +22,7 @@ const defValue: ResponseType = {
 
 
 
-const useBooks = (page: number) => {
+const useBooks = ({ page }: BooksFilterType) => {
     const url = `${URL}${page}`;
     return useRequest<ResponseType>(defValue, url);
 
