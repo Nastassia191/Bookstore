@@ -1,14 +1,16 @@
 import React from 'react';
 import Pagination from '@mui/material/Pagination';
 import BooksFilterType from './BooksFilterType';
+import TextField from '../ui/textField/TextField';
+
 
 import './Books.scss';
 
 
 
 
+
 type PropsType = {
-  //page: number,
   filter: BooksFilterType,
   setFilter: (callback: (v: BooksFilterType) => BooksFilterType) => void
 };
@@ -17,7 +19,18 @@ type PropsType = {
 
 const BooksFilter: React.FC<PropsType> = ({ filter, setFilter }) => {
 
-
+  const setTitle = (title: string) => {
+    setFilter((prevValue) => ({
+      ...prevValue,
+      title
+    }));
+  }
+  const setAuthor = (authors: string) => {
+    setFilter((prevValue) => ({
+      ...prevValue,
+      authors
+    }));
+  }
 
   const handleChangePage = (event: React.ChangeEvent<unknown>, value: number) => {
     setFilter((prevValue) => ({
@@ -29,7 +42,12 @@ const BooksFilter: React.FC<PropsType> = ({ filter, setFilter }) => {
 
 
   return (
-    <div className="books-container">
+
+    <div className="books-filter">
+      <TextField
+        value={filter.title || filter.authors}
+        setValue={setTitle || setAuthor}
+      />
       <div className="pagination">
         <Pagination
           page={filter.page}

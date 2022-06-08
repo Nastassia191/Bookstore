@@ -7,6 +7,13 @@
 
 }
 
+.centre__content {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .icon-button {
   cursor: pointer;
   width: 24px;

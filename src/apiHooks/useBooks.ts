@@ -5,7 +5,7 @@ import useRequest from './useRequest';
 
 
 
-const URL = "https://api.itbook.store/1.0/search/js/";
+const URL = "https://api.itbook.store/1.0/search/";
 
 
 type ResponseType = {
@@ -22,10 +22,17 @@ const defValue: ResponseType = {
 
 
 
-const useBooks = ({ page }: BooksFilterType) => {
-    const url = `${URL}${page}`;
-    return useRequest<ResponseType>(defValue, url);
+const useBooks = ({ page, title, authors }: BooksFilterType) => {
 
+    let url = `${URL}js/${page}`;
+    if (title) {
+        url = `${URL}${title}`;
+    }
+    if (authors) {
+        url = `${URL}${authors}`;
+    }
+
+    return useRequest<ResponseType>(defValue, url);
 }
 
 export default useBooks;
