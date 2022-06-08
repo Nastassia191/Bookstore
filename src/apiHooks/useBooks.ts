@@ -1,5 +1,5 @@
 
-import BooksFilterType from '../component/books/BooksFilterType';
+import BooksFilterType from '../component/books/BooksFilterTypes';
 import BookType from '../types/bookType';
 import useRequest from './useRequest';
 

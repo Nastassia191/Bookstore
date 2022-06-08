@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import BooksCard from './card/BooksCard';
 import useBooks from '../../apiHooks/useBooks';
 import BooksFilter from './BooksFilter';
-import BooksFilterType from './BooksFilterType';
-
+import { BooksFiltrtReducer, initialState } from './BooksFiltrtReducer';
 
 import './Books.scss';
+
 
 type PropsType = {};
 
@@ -14,10 +14,11 @@ type PropsType = {};
 const Books: React.FC<PropsType> = () => {
 
 
-  const [filter, setFilter] = useState<BooksFilterType>({
-    page: 1,
-  });
-  const { data, loading, error } = useBooks(filter);
+
+
+  const [state, dispatch] = useReducer(BooksFiltrtReducer, initialState);
+
+  const { data, loading, error } = useBooks(state);
 
 
 
@@ -25,8 +26,9 @@ const Books: React.FC<PropsType> = () => {
   return (
     <div className="books-container">
       <BooksFilter
-        filter={filter}
-        setFilter={setFilter}
+        state={state}
+        dispatch={dispatch}
+
       />
 
 
