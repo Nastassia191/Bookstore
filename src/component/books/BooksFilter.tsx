@@ -52,7 +52,7 @@ const BooksFilter: React.FC<PropsType> = ({ filter, setFilter }) => {
         <Pagination
           page={filter.page}
           onChange={handleChangePage}
-          count={37}
+          count={37} //как можно в этом апи высчитвать количество страниц, а не задавать фиксированное чило?
         />
       </div>
 
