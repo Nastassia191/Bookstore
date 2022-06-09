@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import useBook from '../../apiHooks/useBook';
 import { ReactComponent as Star } from "../assets/star.svg";
+import { useActions } from '../hooks/useActions';
+import { useSelector } from '../hooks/UseSelector';
 
 import './Book.scss';
-
 
 
 
@@ -13,8 +13,16 @@ const Book: React.FC = () => {
 
   const { isbn13 } = useParams();
 
+  const data = useSelector(state => state.book.data);
+  const loading = useSelector(state => state.book.loading);
+  const error = useSelector(state => state.book.error);
 
-  const { data, loading, error } = useBook(isbn13);
+  const { fetchBook } = useActions();
+
+
+  useEffect(() => {
+    fetchBook(isbn13);
+  }, [isbn13]);
 
 
 
