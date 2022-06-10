@@ -39,6 +39,7 @@ const BooksFilter: React.FC<PropsType> = ({ state, dispatch }) => {
     dispatch(setPage(value));
   }
 
+  const pageCount = Math.ceil(Number(state.total) / 10);
 
 
   return (
@@ -52,7 +53,7 @@ const BooksFilter: React.FC<PropsType> = ({ state, dispatch }) => {
         <Pagination
           page={state.page}
           onChange={handleChangePage}
-          count={37}
+          count={Math.min(pageCount, 100)}
         />
       </div>
 
