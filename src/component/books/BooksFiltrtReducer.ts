@@ -6,7 +6,6 @@ import BooksFilterType, { BooksFilterAction, BooksFilterActionTypes } from "./Bo
 
 export const initialState: BooksFilterType = {
   page: 1,
-  //total: "total",
 }
 
 export const BooksFiltrtReducer = (state: BooksFilterType, action: BooksFilterAction): BooksFilterType => {

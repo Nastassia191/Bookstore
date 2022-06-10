@@ -18,6 +18,9 @@ type PropsType = {
 
 const BooksCard: React.FC<PropsType> = ({ data }) => {
 
+  const handleClickMark = () => {
+
+  }
   return (
 
     <div className="book-card-conteiner">
@@ -33,7 +36,7 @@ const BooksCard: React.FC<PropsType> = ({ data }) => {
       </div>
       <div className='price'>
         {data.price}
-        <IconButton>
+        <IconButton onClick={handleClickMark}>
           <BookMark className="icon" />
         </IconButton>
 

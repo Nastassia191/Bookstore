@@ -40,6 +40,8 @@ const BooksFilter: React.FC<PropsType> = ({ state, dispatch }) => {
   }
 
   const pageCount = Math.ceil(Number(state.total) / 10);
+  console.log(state.total);
+
 
 
   return (
