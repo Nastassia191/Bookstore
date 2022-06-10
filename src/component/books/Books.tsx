@@ -22,7 +22,6 @@ const Books: React.FC<PropsType> = () => {
 
 
 
-
   return (
     <div className="books-container">
       <BooksFilter

@@ -22,9 +22,10 @@ const defValue: ResponseType = {
 
 
 
-const useBooks = ({ page, title, authors }: BooksFilterType) => {
+const useBooks = ({ page, title, authors, total }: BooksFilterType) => {
 
     let url = `${URL}js/${page}`;
+
     if (title) {
         url = `${URL}${title}`;
     }

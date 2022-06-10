@@ -13,3 +13,7 @@ export const setTitle = (value: string): BooksFilterAction => ({
   type: BooksFilterActionTypes.SET_TITLE_TYPE,
   payload: value,
 })
+export const setTotal = (value: string): BooksFilterAction => ({
+  type: BooksFilterActionTypes.SET_TOTAL_TYPE,
+  payload: value,
+})

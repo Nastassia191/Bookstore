@@ -2,7 +2,7 @@ import React from 'react';
 import Pagination from '@mui/material/Pagination';
 import BooksFilterType from './BooksFilterTypes';
 import TextField from '../ui/textField/TextField';
-import { setAuthors, setPage, setTitle } from './BooksFilterActionCreators';
+import { setAuthors, setPage, setTitle, setTotal } from './BooksFilterActionCreators';
 
 
 import './Books.scss';
@@ -29,6 +29,9 @@ const BooksFilter: React.FC<PropsType> = ({ state, dispatch }) => {
   const setAuthor = (value: string) => {
     dispatch(setAuthors(value));
   }
+  const setTotals = (value: string) => {
+    dispatch(setTotal(value));
+  }
 
 
 
@@ -54,8 +57,8 @@ const BooksFilter: React.FC<PropsType> = ({ state, dispatch }) => {
       </div>
 
 
-
     </div>
+
   )
 }
 
