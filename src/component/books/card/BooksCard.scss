@@ -38,8 +38,12 @@
   .price {
     font-size: 26px;
     margin-bottom: 14px;
-
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
   }
+
+
 
   li {
     &:not(:last-child) {
@@ -60,4 +64,17 @@
       text-transform: uppercase;
     }
   }
+
+  .icon {
+    size: 20px;
+    height: 20px;
+
+
+    &._marked {
+      path {
+        fill: #dfdf10;
+      }
+    }
+  }
+
 }

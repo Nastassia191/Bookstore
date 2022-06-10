@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import BookType from '../../../types/bookType';
+import { IconButton } from '@mui/material';
+import { ReactComponent as BookMark } from "../../assets/bookmark.svg"
 
 
 import './BooksCard.scss';
@@ -31,7 +33,13 @@ const BooksCard: React.FC<PropsType> = ({ data }) => {
       </div>
       <div className='price'>
         {data.price}
+        <IconButton>
+          <BookMark className="icon" />
+        </IconButton>
+
       </div>
+
+
     </div>
 
   )
