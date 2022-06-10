@@ -5,26 +5,33 @@ import { BooksActionType, BooksActionTypes } from "./types"
 
 const URL = "https://api.itbook.store/1.0/search/";
 
-export const fetchBooks = () =>
+export const fetchBooks = (page: number, title?: string, authors?: string) =>
   async (dispatch: any) => {
     dispatch(actions.setBooksLoading(true));
     dispatch(actions.setBooks(undefined));
     dispatch(actions.setBooksPage(1));
-    dispatch(actions.setBooksAuthors(""));
-    dispatch(actions.setBooksTitle(""));
-    dispatch(actions.setBooksTotal(""));
+    dispatch(actions.setBooksAuthors(undefined));
+    dispatch(actions.setBooksTitle(undefined));
+    dispatch(actions.setBooksTotal(undefined));
     dispatch(actions.setBooksError(false));
-    const url = `${URL}/`;
 
+    let url = `${URL}js/${page}`;
 
-    // try {
-    //   const response = await axios.get(url);
-    //   dispatch(actions.setBook(response.data as BookType));
-    // } catch {
-    //   dispatch(actions.setBookError(true));
-    // } finally {
-    //   dispatch(actions.setBookLoading(false));
-    // }
+    if (title) {
+      url = `${URL}${title}`;
+    }
+    if (authors) {
+      url = `${URL}${authors}`;
+    }
+
+    try {
+      const response = await axios.get(url);
+      dispatch(actions.setBook(response.data as BookType));
+    } catch {
+      dispatch(actions.setBookError(true));
+    } finally {
+      dispatch(actions.setBookLoading(false));
+    }
 
   }
 
