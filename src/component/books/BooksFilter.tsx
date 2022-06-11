@@ -55,7 +55,7 @@ const BooksFilter: React.FC<PropsType> = ({ state, dispatch }) => {
         <Pagination
           page={state.page}
           onChange={handleChangePage}
-          count={Math.min(pageCount, 100)}
+          count={pageCount}
         />
       </div>
 
