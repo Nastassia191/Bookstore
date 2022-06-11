@@ -15,7 +15,6 @@ import './Books.scss';
 type PropsType = {
   state: BooksFilterType,
   dispatch: any,
-
 };
 
 
@@ -29,9 +28,7 @@ const BooksFilter: React.FC<PropsType> = ({ state, dispatch }) => {
   const setAuthor = (value: string) => {
     dispatch(setAuthors(value));
   }
-  const setTotals = (value: string) => {
-    dispatch(setTotal(value));
-  }
+
 
 
 
@@ -40,7 +37,6 @@ const BooksFilter: React.FC<PropsType> = ({ state, dispatch }) => {
   }
 
   const pageCount = Math.ceil(Number(state.total) / 10);
-  console.log(state.total);
 
 
 
@@ -55,7 +51,7 @@ const BooksFilter: React.FC<PropsType> = ({ state, dispatch }) => {
         <Pagination
           page={state.page}
           onChange={handleChangePage}
-          count={pageCount}
+          count={Math.min(pageCount, 100)}
         />
       </div>
 
