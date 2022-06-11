@@ -43,10 +43,14 @@ const BooksFilter: React.FC<PropsType> = ({ state, dispatch }) => {
   return (
 
     <div className="books-filter">
-      <TextField
-        value={state.title || state.authors}
-        setValue={updateTitle || setAuthor}
-      />
+      <div className="search">
+        <TextField
+          label="Search by author or title"
+          value={state.title || state.authors}
+          setValue={updateTitle || setAuthor}
+        />
+      </div>
+
       <div className="pagination">
         <Pagination
           page={state.page}

@@ -4,11 +4,7 @@
   width: 100%;
   box-sizing: border-box;
 
-  .pagination {
-    margin: 0 auto 24px;
-    display: flex;
-    justify-content: center;
-  }
+
 
   .cards {
     display: flex;
@@ -21,12 +17,20 @@
 
   .books-filter {
     display: flex;
+    justify-content: center;
     align-items: center;
     margin-bottom: 4px;
 
+
   }
 
+  .pagination {
+    margin: 24px auto 0;
+    display: flex;
+    justify-content: center;
+  }
 
-
-
+  .search {
+    margin-right: 24px;
+  }
 }
