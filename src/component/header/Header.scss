@@ -65,13 +65,15 @@
     }
   }
 
-  //   .controls {
-  //     display: flex;
-  //   }
-
-  //   .logout-button {
-  //     margin-right: 24px;
-  //   }
+  .header-theme {
+    svg {
+      fill: white;
+      width: 24px;
+      height: 24px;
+      margin-left: 24px;
+      cursor: pointer;
+    }
+  }
 
 }
 

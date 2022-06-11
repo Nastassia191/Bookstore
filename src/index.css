@@ -6,6 +6,18 @@ body {
   --primary-color2: #c8cfd2;
   --header-color: #525055;
   --text-color: #2d2d2d;
+  --input-color: white;
+}
+
+body[data-theme="dark"] {
+  --background-color: #1f1f26;
+  --card-color: #41414f;
+  --primary-color0: #3c3d3f;
+  --primary-color1: #717475;
+  --primary-color2: #a7acae;
+  --header-color: #111111;
+  --text-color: #9c9ea2;
+  --input-color: #b8b7bd;
 }
 
 

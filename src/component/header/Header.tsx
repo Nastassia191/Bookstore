@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 
 import "./Header.scss";
+import ThemeControl from "./theme/ThemeIcon";
 
 
 
@@ -40,8 +41,12 @@ const Header: React.FC = () => {
             Registration
           </Link>
         </li>
+        <li>
+          <ThemeControl />
+        </li>
 
       </ul>
+
 
     </nav>
 
