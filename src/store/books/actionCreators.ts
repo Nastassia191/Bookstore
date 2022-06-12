@@ -26,7 +26,7 @@ export const fetchBooks = (page: number, title?: string, authors?: string) =>
 
     try {
       const response = await axios.get(url);
-      dispatch(actions.setBook(response.data as BookType));
+      dispatch(actions.setBook(response.data.books as BookType));
     } catch {
       dispatch(actions.setBookError(true));
     } finally {

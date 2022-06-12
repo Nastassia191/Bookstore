@@ -2,7 +2,7 @@ import BookType from "../../types/bookType";
 
 
 export type BooksStateType = {
-  data?: BookType[],
+  data: BookType[],
   page: number,
   title?: string,
   authors?: string,
@@ -22,7 +22,7 @@ export enum BooksActionTypes {
 
 type setDataAction = {
   type: BooksActionTypes.SET_DATA_TYPE,
-  payload?: BookType,
+  payload: BookType[],
 }
 
 export type SetPageAction = {
