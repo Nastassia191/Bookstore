@@ -14,52 +14,30 @@ type PropsType = {};
 
 const Books: React.FC = () => {
 
-  const { title, authors, page } = useParams();
 
-  // const [state, dispatch] = useReducer(BooksFiltrtReducer, initialState);
 
-  // const { data, loading, error } = useBooks(state);
-  const data = useSelector(state => state.book.data);
-  const loading = useSelector(state => state.book.loading);
-  const error = useSelector(state => state.book.error);
+  const [state, dispatch] = useReducer(BooksFiltrtReducer, initialState);
 
-  const { fetchBooks } = useActions();
+  const { data, loading, error } = useBooks(state);
 
-  useEffect(() => {
-    fetchBooks(page, title, authors);
-  }, [title, authors, page]);
-
-  if (loading) {
-    return (
-      <div>
-        Loading...
-      </div>
-    )
-  } else if (error) {
-    return (
-      <div>
-        Error...
-      </div>
-    )
-  } else if (data) {
-
-    return (
-      <div className="books-container">
+  return (
+    <div className="books-container">
+      <div className="books-filter">
         <BooksFilter
           state={state}
           dispatch={dispatch}
-
         />
-
-        <div className="cards">
-          {data.books.map((item) => <BooksCard key={item.isbn13} data={item} />)}
-        </div>
-        {loading && "Loading..."}
-        {error && "Error"}
       </div>
-    )
-  }
-  return null;
+
+
+      <div className="cards">
+        {data.books.map((item) => <BooksCard key={item.isbn13} data={item} />)}
+      </div>
+      {loading && "Loading..."}
+      {error && "Error"}
+    </div>
+  )
+
 }
 
 export default Books;
