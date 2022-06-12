@@ -4,6 +4,7 @@ export enum BooksFilterActionTypes {
   SET_AUTHORS_TYPE = "SET_AUTHORS_TYPE",
   SET_TITLE_TYPE = "SET_TITLE_TYPE",
   SET_TOTAL_TYPE = "SET_TOTAL_TYPE",
+  SET_MARKS_TYPE = "SET_MARKS_TYPE",
 }
 
 

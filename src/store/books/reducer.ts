@@ -1,13 +1,13 @@
 import { BooksActionType, BooksActionTypes, BooksStateType } from "./types";
 
 const initialState: BooksStateType = {
-  data: undefined,
+  data: [],
   loading: false,
   error: false,
   page: 1,
   title: undefined,
   authors: undefined,
-  total: undefined,
+  total: "361",
 }
 
 
