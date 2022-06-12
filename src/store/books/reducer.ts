@@ -5,45 +5,27 @@ const initialState: BooksStateType = {
   loading: false,
   error: false,
   page: 1,
-  title: undefined,
-  authors: undefined,
-  total: "361",
+  query: undefined,
+  total: 0,
 }
 
 
 export const booksReducer = (state = initialState, action: BooksActionType): BooksStateType => {
   switch (action.type) {
-    case BooksActionTypes.SET_DATA_TYPE: {
-      return {
-        ...state,
-        data: action.payload,
-      }
-    }
     case BooksActionTypes.SET_PAGE_TYPE: {
       return {
         ...state,
-        page: action.payload,
+        page: Number(action.payload.page),
+        total: Number(action.payload.total),
+        data: action.payload.books,
       }
     }
-    case BooksActionTypes.SET_AUTHORS_TYPE: {
+    case BooksActionTypes.SET_QUERY_TYPE: {
       return {
         ...state,
-        authors: action.payload,
+        query: action.payload,
       }
     }
-    case BooksActionTypes.SET_TITLE_TYPE: {
-      return {
-        ...state,
-        title: action.payload,
-      }
-    }
-    case BooksActionTypes.SET_TOTAL_TYPE: {
-      return {
-        ...state,
-        total: action.payload,
-      }
-    }
-
     case BooksActionTypes.SET_LOADING_TYPE: {
       return {
         ...state,

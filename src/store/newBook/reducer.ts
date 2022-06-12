@@ -1,4 +1,3 @@
-import BookType from "../../types/bookType";
 import { NewBookActionType, NewBookActionTypes, NewBookStateType } from "./types";
 
 const initialState: NewBookStateType = {

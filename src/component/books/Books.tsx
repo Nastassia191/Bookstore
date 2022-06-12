@@ -1,10 +1,9 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect, useState } from 'react';
 import BooksCard from './card/BooksCard';
 import { useSelector } from '../hooks/UseSelector';
 import { useActions } from '../hooks/useActions';
-import { useParams } from 'react-router-dom';
+import BooksPagination from './BooksPagination';
 import BooksFilter from './BooksFilter';
-
 
 
 import './Books.scss';
@@ -13,20 +12,25 @@ import './Books.scss';
 
 const Books: React.FC = () => {
 
-  const { title, authors, page } = useParams();
-
-  // const [state, dispatch] = useReducer(BooksFiltrtReducer, initialState);
-
-  // const { data, loading, error } = useBooks(state);
   const data = useSelector(state => state.books.data);
   const loading = useSelector(state => state.books.loading);
   const error = useSelector(state => state.books.error);
+  const total = useSelector(state => state.books.total);
+
 
   const { fetchBooks } = useActions();
 
-  // useEffect(() => {
-  //   fetchBooks(page, title, authors);
-  // }, [title, authors, page]);
+  const [page, setPage] = useState(1);
+  const [query, setQuery] = useState("");
+  const handlePages = (updatedPage: number) => setPage(updatedPage);
+  const handleSearch = (updatedQuery: string) => {
+    setQuery(updatedQuery);
+    setPage(1);
+  };
+
+  useEffect(() => {
+    fetchBooks(page, query);
+  }, [page, query]);
 
   if (loading) {
     return (
@@ -44,11 +48,17 @@ const Books: React.FC = () => {
 
     return (
       <div className="books-container">
-        {/* <BooksFilter
-        // state={state}
-        // dispatch={dispatch}
-
-        /> */}
+        <div className="books-filter">
+          <BooksPagination
+            page={page}
+            total={total}
+            handlePagination={handlePages}
+          />
+          <BooksFilter
+            query={query}
+            handleSearch={handleSearch}
+          />
+        </div>
 
         <div className="cards">
           {data.map((item) => <BooksCard key={item.isbn13} data={item} />)}
