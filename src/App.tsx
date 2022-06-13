@@ -5,16 +5,18 @@ import Books from './component/books/Books';
 import NewBooks from './component/books/NewBooks';
 import Header from './component/header/Header';
 import Registration from './component/registration/Registration';
+import { handleTheme } from './component/hooks/handleTheme';
 
 import './App.scss';
 
+
 const App: React.FC = () => {
+  handleTheme();
   return (
     <BrowserRouter>
       <div className="App-conteiner">
         <Header />
         <div className="App-content">
-
           <Routes>
             <Route path='*' element={<Books />} />
             <Route path='/books'  >
@@ -23,9 +25,7 @@ const App: React.FC = () => {
             </Route>
             <Route path='registration' element={<Registration />} />
             <Route path='newBooks' element={<NewBooks />} />
-
           </Routes>
-
         </div>
       </div>
 

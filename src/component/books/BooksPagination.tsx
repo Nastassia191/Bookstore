@@ -21,9 +21,7 @@ const BooksPagination: React.FC<PropsType> = ({ page, total, handlePagination })
 
   const pageCount = Math.ceil(total / 10);
 
-
   return (
-
     <div className="pagination">
       <Pagination
         page={page}
@@ -31,9 +29,6 @@ const BooksPagination: React.FC<PropsType> = ({ page, total, handlePagination })
         count={Math.min(pageCount, 100)}
       />
     </div>
-
-
-
   )
 }
 

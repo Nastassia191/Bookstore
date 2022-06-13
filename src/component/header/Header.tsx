@@ -2,11 +2,12 @@ import React from "react";
 import Timer from '../timer/Timer';
 import { ReactComponent as Logo } from "../assets/logo.svg";
 import { Link } from "react-router-dom";
-import ThemeControl from "./theme/ThemeIcon";
+import ThemeControl from "./theme/ThemeControl";
 import useTranslete from "../hooks/useTranslete";
 
 
 import "./Header.scss";
+
 
 
 
