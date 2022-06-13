@@ -1,43 +1,76 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect, useState } from 'react';
 import BooksCard from './card/BooksCard';
-import useBooks from '../../apiHooks/useBooks';
-import BooksFilter from './BooksFilter';
-import { BooksFiltrtReducer, initialState } from './BooksFiltrtReducer';
-
-import './Books.scss';
 import { useSelector } from '../hooks/UseSelector';
 import { useActions } from '../hooks/useActions';
-import { useParams } from 'react-router-dom';
+import BooksPagination from './BooksPagination';
+import BooksFilter from './BooksFilter';
 
-type PropsType = {};
+
+import './Books.scss';
+
 
 
 const Books: React.FC = () => {
 
+  const data = useSelector(state => state.books.data);
+  const loading = useSelector(state => state.books.loading);
+  const error = useSelector(state => state.books.error);
+  const total = useSelector(state => state.books.total);
 
 
-  const [state, dispatch] = useReducer(BooksFiltrtReducer, initialState);
+  const { fetchBooks } = useActions();
 
-  const { data, loading, error } = useBooks(state);
+  const [page, setPage] = useState(1);
+  const [query, setQuery] = useState("");
+  const handlePages = (updatedPage: number) => setPage(updatedPage);
+  const handleSearch = (updatedQuery: string) => {
+    setQuery(updatedQuery);
+    setPage(1);
+  };
 
-  return (
-    <div className="books-container">
-      <div className="books-filter">
-        <BooksFilter
-          state={state}
-          dispatch={dispatch}
-        />
+  useEffect(() => {
+    fetchBooks(page, query);
+  }, [page, query]);
+
+  if (loading) {
+    return (
+      <div>
+        Loading...
       </div>
-
-
-      <div className="cards">
-        {data.books.map((item) => <BooksCard key={item.isbn13} data={item} />)}
+    )
+  } else if (error) {
+    return (
+      <div>
+        Error...
       </div>
-      {loading && "Loading..."}
-      {error && "Error"}
-    </div>
-  )
+    )
+  } else if (data) {
 
+    return (
+      <div className="books-container">
+        <div className="books-filter">
+          <BooksPagination
+            page={page}
+            total={total}
+            handlePagination={handlePages}
+          />
+          <BooksFilter
+            query={query}
+            handleSearch={handleSearch}
+          />
+        </div>
+
+        <div className="cards">
+          {data.map((item) => <BooksCard key={item.isbn13} data={item} />)}
+        </div>
+        {loading && "Loading..."}
+        {error && "Error"}
+      </div>
+    )
+  }
+  return null;
 }
+
+
 
 export default Books;

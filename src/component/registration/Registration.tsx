@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import FormValuesType from '../../types/formValuesType';
 import useTranslete from '../hooks/useTranslete';
 import Button from '../ui/button/Button';
@@ -16,7 +15,6 @@ const Registration: React.FC = () => {
 
   const [values, setValues] = useState<FormValuesType>({});
   const { t } = useTranslete();
-  const { lang, setLang } = useTranslete();
 
 
 
@@ -27,16 +25,6 @@ const Registration: React.FC = () => {
   return (
     <div className="centre__content">
       <FormCard header="Registration">
-        {lang === "en"
-          ?
-          <button className='button_registration_lang' onClick={() => setLang("ru")}>
-            ru
-          </button>
-          :
-          <button className='button_registration_lang' onClick={() => setLang("en")}>
-            en
-          </button>
-        }
         <FormTextField
           autofocus={true}
           label={t("login.name")}
