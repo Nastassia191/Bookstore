@@ -9,12 +9,14 @@ export type BooksStateType = {
   total: number,
   loading: boolean,
   error: boolean,
+  marked: string[],
 }
 export enum BooksActionTypes {
   SET_PAGE_TYPE = "SET_PAGE_TYPE",
   SET_QUERY_TYPE = "SET_QUERY_TYPE",
   SET_LOADING_TYPE = "SET_LOADING_TYPE",
   SET_ERROR_TYPE = "SET_ERROR_TYPE",
+  SET_MARKED_TYPE = "SET_MARKED_TYPE"
 }
 
 export type SetPageAction = {
@@ -35,9 +37,15 @@ type setErrorAction = {
   type: BooksActionTypes.SET_ERROR_TYPE,
   payload: boolean,
 }
+type setMarkedAction = {
+  type: BooksActionTypes.SET_MARKED_TYPE,
+  payload: boolean,
+}
+
 export type BooksActionType =
   SetPageAction
   | SetQueryAction
+  | setMarkedAction
   | setLoadingAction
   | setErrorAction;
 

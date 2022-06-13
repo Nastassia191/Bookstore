@@ -2,13 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import BookType from '../../../types/bookType';
 import { IconButton } from '@mui/material';
-import { ReactComponent as BookMark } from "../../assets/bookmark.svg"
-
+import { ReactComponent as BookMark } from "../../assets/bookmark.svg";
+import { useActions } from '../../hooks/useActions';
+import { useSelector } from '../../hooks/UseSelector';
 
 import './BooksCard.scss';
-
-
-
 
 
 
@@ -18,9 +16,14 @@ type PropsType = {
 
 const BooksCard: React.FC<PropsType> = ({ data }) => {
 
-  const handleClickMark = () => {
+  const { setMarkedBooks } = useActions();
+  const likes = useSelector(state => state.books.marked);
+  const isMarked = likes.includes(data.isbn13);
 
+  const handleClickMark = () => {
+    setMarkedBooks(data.isbn13);
   }
+
   return (
 
     <div className="book-card-conteiner">
@@ -37,12 +40,9 @@ const BooksCard: React.FC<PropsType> = ({ data }) => {
       <div className='price'>
         {data.price}
         <IconButton onClick={handleClickMark}>
-          <BookMark className="icon" />
+          <BookMark className={`icon ${isMarked ? "_marked" : ""}`} />
         </IconButton>
-
       </div>
-
-
     </div>
 
   )

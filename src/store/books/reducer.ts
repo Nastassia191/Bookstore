@@ -1,6 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { BooksActionTypes, BooksStateType } from "./types";
 
+
 const initialState: BooksStateType = {
   data: [],
   loading: false,
@@ -8,6 +9,7 @@ const initialState: BooksStateType = {
   page: 1,
   query: undefined,
   total: 0,
+  marked: JSON.parse(localStorage.getItem("marked") || "") as string[],
 }
 
 export const booksReducer = createReducer(initialState, {
@@ -24,5 +26,13 @@ export const booksReducer = createReducer(initialState, {
   },
   [BooksActionTypes.SET_ERROR_TYPE]: (state, action) => {
     state.error = action.payload;
+  },
+  [BooksActionTypes.SET_MARKED_TYPE]: (state, action) => {
+    if (!state.marked.includes(action.payload)) {
+      state.marked.push(action.payload);
+    } else {
+      state.marked = state.marked.filter(isbn13 => isbn13 !== action.payload);
+    }
+    localStorage.setItem("marked", JSON.stringify(state.marked));
   }
 });

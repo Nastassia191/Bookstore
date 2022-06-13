@@ -32,5 +32,6 @@ export const setBooksPage = createAction<BookPage>(BooksActionTypes.SET_PAGE_TYP
 export const setBooksQuery = createAction<string | undefined>(BooksActionTypes.SET_QUERY_TYPE);
 export const setBooksLoading = createAction<boolean>(BooksActionTypes.SET_LOADING_TYPE);
 export const setBooksError = createAction<boolean>(BooksActionTypes.SET_ERROR_TYPE);
+export const setMarkedBooks = createAction<string>(BooksActionTypes.SET_MARKED_TYPE);
 
 
