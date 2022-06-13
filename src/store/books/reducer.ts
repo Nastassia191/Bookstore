@@ -1,4 +1,5 @@
-import { BooksActionType, BooksActionTypes, BooksStateType } from "./types";
+import { createReducer } from "@reduxjs/toolkit";
+import { BooksActionTypes, BooksStateType } from "./types";
 
 const initialState: BooksStateType = {
   data: [],
@@ -9,36 +10,19 @@ const initialState: BooksStateType = {
   total: 0,
 }
 
-
-export const booksReducer = (state = initialState, action: BooksActionType): BooksStateType => {
-  switch (action.type) {
-    case BooksActionTypes.SET_PAGE_TYPE: {
-      return {
-        ...state,
-        page: Number(action.payload.page),
-        total: Number(action.payload.total),
-        data: action.payload.books,
-      }
-    }
-    case BooksActionTypes.SET_QUERY_TYPE: {
-      return {
-        ...state,
-        query: action.payload,
-      }
-    }
-    case BooksActionTypes.SET_LOADING_TYPE: {
-      return {
-        ...state,
-        loading: action.payload,
-      }
-    }
-
-    case BooksActionTypes.SET_ERROR_TYPE: {
-      return {
-        ...state,
-        error: action.payload,
-      }
-    }
-    default: return state;
+export const booksReducer = createReducer(initialState, {
+  [BooksActionTypes.SET_PAGE_TYPE]: (state, action) => {
+    state.data = action.payload.books;
+    state.page = Number(action.payload.page);
+    state.total = Number(action.payload.total);
+  },
+  [BooksActionTypes.SET_QUERY_TYPE]: (state, action) => {
+    state.loading = action.payload;
+  },
+  [BooksActionTypes.SET_LOADING_TYPE]: (state, action) => {
+    state.loading = action.payload;
+  },
+  [BooksActionTypes.SET_ERROR_TYPE]: (state, action) => {
+    state.error = action.payload;
   }
-}
+});

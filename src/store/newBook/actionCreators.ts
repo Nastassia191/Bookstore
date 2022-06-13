@@ -1,7 +1,7 @@
 import BookType from "../../types/bookType";
 import axios from "axios";
 import actions from "../actions";
-import { NewBookActionType, NewBookActionTypes } from "./types"
+import { NewBookActionTypes } from "./types"
 import { createAction } from "@reduxjs/toolkit";
 
 const URL = "https://api.itbook.store/1.0/new";

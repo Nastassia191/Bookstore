@@ -1,6 +1,6 @@
 import axios from "axios";
 import actions from "../actions";
-import { BooksActionType, BooksActionTypes } from "./types"
+import { BooksActionTypes } from "./types"
 import BookPage from "../../types/bookPage";
 import { createAction } from "@reduxjs/toolkit";
 
