@@ -1,10 +1,19 @@
 import { BookActionType, BookActionTypes, BookStateType } from "./types";
+import { createReducer } from "@reduxjs/toolkit";
+import actions from "../actions";
 
 const initialState: BookStateType = {
   data: undefined,
   loading: false,
   error: false,
 }
+
+// export const bookReducer = createReducer(initialState, {
+//   [BookActionTypes.SET_LOADING]: (state, action: BookActionType) => {
+//     state.loading = action.payload;
+//   }
+// });
+
 
 
 export const bookReducer = (state = initialState, action: BookActionType): BookStateType => {

@@ -2,6 +2,7 @@ import BookType from "../../types/bookType";
 import axios from "axios";
 import actions from "../actions";
 import { BookActionType, BookActionTypes } from "./types"
+import { createAction } from "@reduxjs/toolkit";
 
 const URL = "https://api.itbook.store/1.0/books/";
 
@@ -23,17 +24,6 @@ export const fetchBook = (isbn13?: string) =>
 
   }
 
-export const setBook = (value?: BookType): BookActionType => ({
-  type: BookActionTypes.SET_DATA,
-  payload: value,
-})
-
-export const setBookLoading = (value: boolean): BookActionType => ({
-  type: BookActionTypes.SET_LOADING,
-  payload: value,
-})
-
-export const setBookError = (value: boolean): BookActionType => ({
-  type: BookActionTypes.SET_ERROR,
-  payload: value,
-})
+export const setBook = createAction<BookType | undefined>(BookActionTypes.SET_DATA);
+export const setBookLoading = createAction<boolean>(BookActionTypes.SET_LOADING);
+export const setBookError = createAction<boolean>(BookActionTypes.SET_ERROR);
