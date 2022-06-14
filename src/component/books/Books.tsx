@@ -65,7 +65,12 @@ const Books: React.FC = () => {
         </div>
 
         <div className="cards">
-          {data.map((item) => <BooksCard key={item.isbn13} data={item} />)}
+          {data.length > 0 ?
+            (data.map((item) => <BooksCard key={item.isbn13} data={item} />)
+            ) : (
+              <div>Ничего не найдено</div>
+            )
+          }
         </div>
         {loading && "Loading..."}
         {error && "Error"}
