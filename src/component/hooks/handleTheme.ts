@@ -11,5 +11,4 @@ export const handleTheme = (changed?: boolean) => {
   } else if (theme) {
     document.body.dataset.theme = theme;
   }
-
 }

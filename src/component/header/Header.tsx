@@ -30,18 +30,17 @@ const Header: React.FC = () => {
       </div>
 
       < ul className="links">
-        <li>
+        <li className="links_newBooks">
           <Link to="/newBooks">
             New books
           </Link>
-
         </li>
-        <li>
+        <li className="links_registration">
           <Link to="/registration">
             Registration
           </Link>
         </li>
-        <li>
+        <li className="links_translate">
           {lang === "en"
             ?
             <button className='button_registration_lang' onClick={() => setLang("ru")}>
@@ -53,7 +52,7 @@ const Header: React.FC = () => {
             </button>
           }
         </li>
-        <li>
+        <li className="links_theme">
           <ThemeControl />
         </li>
 

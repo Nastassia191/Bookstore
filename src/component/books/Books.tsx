@@ -45,19 +45,23 @@ const Books: React.FC = () => {
       </div>
     )
   } else if (data) {
-
     return (
       <div className="books-container">
         <div className="books-filter">
-          <BooksPagination
-            page={page}
-            total={total}
-            handlePagination={handlePages}
-          />
-          <BooksFilter
-            query={query}
-            handleSearch={handleSearch}
-          />
+          <div className="books-filter_pagination">
+            <BooksPagination
+              page={page}
+              total={total}
+              handlePagination={handlePages}
+            />
+          </div>
+          <div className="books-filter_serch">
+            <BooksFilter
+              query={query}
+              handleSearch={handleSearch}
+            />
+          </div>
+
         </div>
 
         <div className="cards">

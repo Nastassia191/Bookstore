@@ -16,10 +16,7 @@ const Registration: React.FC = () => {
   const [values, setValues] = useState<FormValuesType>({});
   const { t } = useTranslete();
 
-
-
   const handleSubmint = () => {
-    console.log(values);
   }
 
   return (

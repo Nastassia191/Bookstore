@@ -48,7 +48,6 @@ const TextField: React.FC<PropsType> = ({
         className="input"
         type={type}
       />
-
     </div>
   )
 }

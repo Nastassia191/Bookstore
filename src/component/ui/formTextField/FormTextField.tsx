@@ -24,9 +24,6 @@ const FormTextField: React.FC<PropsType> = ({
   ...props
 }) => {
 
-
-
-
   const setValue = (value: string) => {
     setValues((prevValues) => ({
       ...prevValues,

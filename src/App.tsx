@@ -28,7 +28,6 @@ const App: React.FC = () => {
           </Routes>
         </div>
       </div>
-
     </BrowserRouter>
   );
 }

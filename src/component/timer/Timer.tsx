@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-
-import "./Timer.scss";
 import { ReactComponent as TimerIcon } from "../assets/timer.svg";
 import useTime from "../hooks/useTime";
 
+import "./Timer.scss";
 
 
 const SHOW_TIME = "showTime";
@@ -27,7 +26,6 @@ const Timer: React.FC = () => {
       <TimerIcon
         onClick={handleClick}
         className="icon-button" />
-
       {showTime &&
         <div className="time">
           Time: {time}

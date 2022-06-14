@@ -1,16 +1,18 @@
 .header-container {
   z-index: 999;
-  height: 90px;
+  max-height: 90px;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   background-color: var(--header-color);
-  padding: 0 48px;
+  padding: 10px 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   box-shadow: 0px 0px 8px 1px #084b9e;
+
+
 
   .logo-container {
     align-items: column;
@@ -22,8 +24,8 @@
     margin-bottom: 10px;
 
     svg {
-      width: 44px;
-      height: 44px;
+      max-width: 44px;
+      max-height: 44px;
       margin-right: 10px;
 
       path {
@@ -75,12 +77,5 @@
     }
   }
 
+
 }
-
-
-// .header-username {
-//   color: white;
-//   margin-right: 18px;
-//   display: flex;
-//   align-items: center;
-// }
