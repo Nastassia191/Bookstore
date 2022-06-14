@@ -22,7 +22,7 @@ const Header: React.FC = () => {
       <div className="logo-container">
         <div className="logo">
           <Logo />
-          <Link className="app-name" to="/books">
+          <Link className="app-name" to="/newBooks">
             Book.store
           </Link>
         </div>
@@ -31,8 +31,8 @@ const Header: React.FC = () => {
 
       < ul className="links">
         <li className="links_newBooks">
-          <Link to="/newBooks">
-            New books
+          <Link to="/books">
+            Books searche
           </Link>
         </li>
         <li className="links_registration">

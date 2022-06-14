@@ -22,15 +22,17 @@ const Books: React.FC = () => {
 
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState("");
-  const handlePages = (updatedPage: number) => setPage(updatedPage);
+  const handlePages = (updatedPage: number) => {
+    setPage(updatedPage);
+    fetchBooks(page, query);
+  };
   const handleSearch = (updatedQuery: string) => {
     setQuery(updatedQuery);
     setPage(1);
+    fetchBooks(page, query);
   };
 
-  useEffect(() => {
-    fetchBooks(page, query);
-  }, [page, query]);
+
 
   if (loading) {
     return (
@@ -68,10 +70,11 @@ const Books: React.FC = () => {
           {data.length > 0 ?
             (data.map((item) => <BooksCard key={item.isbn13} data={item} />)
             ) : (
-              <div>Ничего не найдено</div>
+              <div>Nothing found, enter a query</div>
             )
           }
         </div>
+
         {loading && "Loading..."}
         {error && "Error"}
       </div>

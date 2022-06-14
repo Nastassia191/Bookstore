@@ -39,6 +39,13 @@ const NewBooks: React.FC = () => {
   } else if (data) {
     return (
       <div className="books-container">
+        <div className="title-newBook">
+          <h3>
+            NEW BOOKS
+          </h3>
+        </div>
+
+
         <div className="cards">
           {data.map((item) => <BooksCard key={item.isbn13} data={item} />)}
         </div>

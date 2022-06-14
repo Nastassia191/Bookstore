@@ -11,11 +11,11 @@ export const fetchBooks = (page: number, query: string) =>
     dispatch(actions.setBooksLoading(true));
     dispatch(actions.setBooksError(false));
 
-    let url = `${URL}all/${page}`;
+    let url = `${URL}${query}/${page}`;
 
-    if (query) {
-      url = `${URL}${query}/${page}`;
-    }
+    // if (query) {
+    //   url = `${URL}${query}/${page}`;
+    // }
 
     try {
       const response = await axios.get(url);

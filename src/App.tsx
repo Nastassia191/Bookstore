@@ -18,7 +18,7 @@ const App: React.FC = () => {
         <Header />
         <div className="App-content">
           <Routes>
-            <Route path='*' element={<Books />} />
+            <Route path='*' element={<NewBooks />} />
             <Route path='/books'  >
               <Route index element={<Books />} />
               <Route path=':isbn13' element={<Book />} />
