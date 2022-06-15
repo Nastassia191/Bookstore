@@ -29,7 +29,9 @@ const Books: React.FC = () => {
   const handleSearch = (updatedQuery: string) => {
     setQuery(updatedQuery);
     setPage(1);
-    fetchBooks(page, query);
+    if (query) {
+      fetchBooks(page, query);
+    }
   };
 
 
@@ -67,14 +69,14 @@ const Books: React.FC = () => {
         </div>
 
         <div className="cards">
-          {data.length > 0 ?
+          {query && (data.length > 0) ?
             (data.map((item) => <BooksCard key={item.isbn13} data={item} />)
             ) : (
-              <div>Nothing found, enter a query</div>
+              <div>Nothing found...</div>
             )
           }
         </div>
-
+        {!query && "Начните поиск..."}
         {loading && "Loading..."}
         {error && "Error"}
       </div>
