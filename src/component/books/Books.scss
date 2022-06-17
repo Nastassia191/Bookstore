@@ -20,10 +20,15 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 4px;
+
+    .button_search {
+      //margin-top: 28px;
+      margin-left: 4px;
+    }
   }
 
   .pagination {
-    margin: 24px auto 0;
+    //margin: 24px auto 0;
     display: flex;
     justify-content: center;
   }

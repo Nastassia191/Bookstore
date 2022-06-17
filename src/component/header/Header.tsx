@@ -21,7 +21,7 @@ const Header: React.FC = () => {
     <nav className="header-container">
       <div className="logo-container">
         <div className="logo">
-          <Logo />
+          <Logo className="image-logo" />
           <Link className="app-name" to="/newBooks">
             Book.store
           </Link>
@@ -30,6 +30,11 @@ const Header: React.FC = () => {
       </div>
 
       < ul className="links">
+        <li className="links_newBooks">
+          <Link to="/mewBooks">
+            New books
+          </Link>
+        </li>
         <li className="links_newBooks">
           <Link to="/books">
             Books searche

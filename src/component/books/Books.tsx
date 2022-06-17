@@ -26,12 +26,16 @@ const Books: React.FC = () => {
     setPage(updatedPage);
     fetchBooks(page, query);
   };
+
   const handleSearch = (updatedQuery: string) => {
     setQuery(updatedQuery);
     setPage(1);
     if (query) {
       fetchBooks(page, query);
     }
+  };
+  const handleQuery = (updatedQuery: string) => {
+    setQuery(updatedQuery);
   };
 
 
@@ -53,16 +57,17 @@ const Books: React.FC = () => {
       <div className="books-container">
         <div className="books-filter">
           <div className="books-filter_pagination">
-            <BooksPagination
+            {query && (data.length > 0) && <BooksPagination
               page={page}
               total={total}
               handlePagination={handlePages}
-            />
+            />}
           </div>
           <div className="books-filter_serch">
             <BooksFilter
               query={query}
               handleSearch={handleSearch}
+              handleQuery={handleQuery}
             />
           </div>
 
@@ -71,12 +76,10 @@ const Books: React.FC = () => {
         <div className="cards">
           {query && (data.length > 0) ?
             (data.map((item) => <BooksCard key={item.isbn13} data={item} />)
-            ) : (
-              <div>Nothing found...</div>
-            )
+            ) : null
           }
         </div>
-        {!query && "Начните поиск..."}
+        {!query && "Enter a query..."}
         {loading && "Loading..."}
         {error && "Error"}
       </div>
